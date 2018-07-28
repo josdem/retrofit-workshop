@@ -26,5 +26,6 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compileOnly('org.projectlombok:lombok')
+  implementation('com.squareup.retrofit2:retrofit:2.4.0')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
