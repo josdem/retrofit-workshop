@@ -1,8 +1,8 @@
 package com.jos.dem.retrofit.workshop.service;
 
 import reactor.core.publisher.Flux;
-import com.jos.dem.webclient.model.SSHKey;
-import com.jos.dem.webclient.model.PublicEmail;
+import com.jos.dem.retrofit.workshop.model.SSHKey;
+import com.jos.dem.retrofit.workshop.model.PublicEmail;
 
 public interface UserService {
 

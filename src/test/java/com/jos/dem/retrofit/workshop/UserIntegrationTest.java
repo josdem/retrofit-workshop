@@ -1,4 +1,4 @@
-package com.jos.dem.retrofit.workshop.model;
+package com.jos.dem.retrofit.workshop;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -9,7 +9,7 @@ import com.jos.dem.retrofit.workshop.service.UserService;
 
 import reactor.core.publisher.Flux;
 
-@ContextConfiguration(classes = WebClientApplication.class)
+@ContextConfiguration(classes = RetrofitWorkshopApplication.class)
 @WebAppConfiguration
 public class UserIntegrationTest {
 
