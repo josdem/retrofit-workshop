@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.jos.dem.webclient.model.PublicEmail;
+import com.jos.dem.retrofit.workshop.model.PublicEmail;
 import java.util.List;
 
 import cucumber.api.java.en.Then;

@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.jos.dem.webclient.model.PublicEmail;
-import com.jos.dem.webclient.service.UserService;
+import com.jos.dem.retrofit.workshop.model.PublicEmail;
+import com.jos.dem.retrofit.workshop.service.UserService;
 
 import reactor.core.publisher.Flux;
 
