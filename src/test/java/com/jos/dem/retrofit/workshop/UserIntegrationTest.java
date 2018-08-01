@@ -7,7 +7,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.jos.dem.retrofit.workshop.model.PublicEmail;
 import com.jos.dem.retrofit.workshop.service.UserService;
 
-import reactor.core.publisher.Flux;
+import retrofit2.Call;
 
 @ContextConfiguration(classes = RetrofitWorkshopApplication.class)
 @WebAppConfiguration
@@ -16,8 +16,8 @@ public class UserIntegrationTest {
   @Autowired
   private UserService userService;
 
-  Flux<PublicEmail> getEmails() throws Exception {
-    return userService.getEmails();
+  List<PublicEmail> getEmails() throws Exception {
+    Call<List<PublicEmail>> call = userService.getEmails();
   }
 
 }
