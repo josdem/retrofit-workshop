@@ -6,9 +6,13 @@ import org.springframework.util.Base64Utils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
 
 @SpringBootApplication
 @PropertySource("classpath:application.properties")
@@ -21,13 +25,23 @@ public class RetrofitWorkshopApplication {
   @Value("${token}")
   private String token;
 
+  private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
+  private httpClient.addInterceptor(new Interceptor() {
+    @Override
+    public Response intercept(Chain chain) throws IOException {
+      Request request = chain.request().newBuilder().addHeader("Authorization", "Basic " + Base64Utils
+        .encodeToString((username + ":" + token).getBytes(UTF_8))).build();
+      return chain.proceed(request);
+    }
+  });
+
   @Bean
-  public WebClient webClient() {
-    return WebClient
-      .builder()
+  public Retrofit retrofit() {
+    return new Retrofit.Builder()
       .baseUrl(githubApiUrl)
-      .defaultHeader("Authorization", "Basic " + Base64Utils
-          .encodeToString((username + ":" + token).getBytes(UTF_8)))
+      .addConverterFactory(GsonConverterFactory.create())
+      .client(httpClient.build())
       .build();
   }
 
