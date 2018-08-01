@@ -1,2 +1,4 @@
-.gradle
-/build/
+**swp
+.gradle/
+build/
+src/main/resources/application.properties
