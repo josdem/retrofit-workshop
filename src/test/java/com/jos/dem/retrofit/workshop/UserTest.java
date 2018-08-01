@@ -9,15 +9,12 @@ import java.util.List;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import reactor.core.publisher.Flux;
 
 public class UserTest extends UserIntegrationTest {
 
   @Then("^User gets his public emails$")
   public void shouldGetEmails() throws Exception {
     List<PublicEmail> emails = getEmails()
-      .collectList()
-      .block();
     PublicEmail email = emails.get(0);
 
     assertTrue(emails.size() == 1,  () -> "Should be 1 email");
