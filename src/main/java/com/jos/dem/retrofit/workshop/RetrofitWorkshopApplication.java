@@ -2,12 +2,18 @@ package com.jos.dem.retrofit.workshop;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import java.io.IOException;
+
+import javax.annotation.PostConstruct;
 import org.springframework.util.Base64Utils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import okhttp3.Request;
 import okhttp3.Response;
@@ -27,7 +33,9 @@ public class RetrofitWorkshopApplication {
 
   private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-  private httpClient.addInterceptor(new Interceptor() {
+  @PostConstruct
+	public void setup() {
+    httpClient.addInterceptor(new Interceptor() {
     @Override
     public Response intercept(Chain chain) throws IOException {
       Request request = chain.request().newBuilder().addHeader("Authorization", "Basic " + Base64Utils
@@ -35,6 +43,7 @@ public class RetrofitWorkshopApplication {
       return chain.proceed(request);
     }
   });
+  }
 
   @Bean
   public Retrofit retrofit() {

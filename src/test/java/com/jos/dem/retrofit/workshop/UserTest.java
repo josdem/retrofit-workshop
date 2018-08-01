@@ -14,7 +14,7 @@ public class UserTest extends UserIntegrationTest {
 
   @Then("^User gets his public emails$")
   public void shouldGetEmails() throws Exception {
-    List<PublicEmail> emails = getEmails()
+    List<PublicEmail> emails = getEmails();
     PublicEmail email = emails.get(0);
 
     assertTrue(emails.size() == 1,  () -> "Should be 1 email");
