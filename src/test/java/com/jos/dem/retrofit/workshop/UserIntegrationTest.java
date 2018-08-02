@@ -27,7 +27,7 @@ public class UserIntegrationTest {
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
   List<PublicEmail> getEmails() {
-    Call<List<PublicEmail> result = userService.getEmails();
+    Call<List<PublicEmail>> call = userService.getEmails();
     call.enqueue(new retrofit2.Callback<List<PublicEmail>>() {
 
       @Override
