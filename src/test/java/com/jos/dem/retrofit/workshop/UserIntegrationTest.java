@@ -24,11 +24,10 @@ public class UserIntegrationTest {
   private UserService userService;
 
   private List<PublicEmail> emails = new ArrayList<PublicEmail>();
-
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
-  List<PublicEmail> getEmails() throws Exception {
-    Call<List<PublicEmail>> call = userService.getEmails();
+  List<PublicEmail> getEmails() {
+    Call<List<PublicEmail> result = userService.getEmails();
     call.enqueue(new retrofit2.Callback<List<PublicEmail>>() {
 
       @Override
