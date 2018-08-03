@@ -18,31 +18,4 @@ import org.slf4j.LoggerFactory;
 
 @ContextConfiguration(classes = RetrofitWorkshopApplication.class)
 @WebAppConfiguration
-public class UserIntegrationTest {
-
-  @Autowired
-  private UserService userService;
-
-  private List<PublicEmail> emails = new ArrayList<PublicEmail>();
-  private Logger log = LoggerFactory.getLogger(this.getClass());
-
-  List<PublicEmail> getEmails() {
-    Call<List<PublicEmail>> call = userService.getEmails();
-    call.enqueue(new retrofit2.Callback<List<PublicEmail>>() {
-
-      @Override
-      public void onResponse(Call<List<PublicEmail>> call, Response<List<PublicEmail>> response) {
-        emails = response.body();
-      }
-
-      @Override
-      public void onFailure(Call<List<PublicEmail>> call, Throwable t) {
-        log.info("error", t.getMessage());
-      }
-
-    });
-
-    return emails;
-  }
-
-}
+public class UserIntegrationTest {}
