@@ -4,7 +4,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 import java.io.IOException;
 
-import javax.annotation.PostConstruct;
 import org.springframework.util.Base64Utils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
@@ -31,18 +30,17 @@ public class RetrofitWorkshopApplication {
   @Value("${token}")
   private String token;
 
-  private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-
-  @PostConstruct
-	public void setup() {
+  private OkHttpClient.Builder buildClient() {
+    OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
     httpClient.addInterceptor(new Interceptor() {
-    @Override
-    public Response intercept(Chain chain) throws IOException {
-      Request request = chain.request().newBuilder().addHeader("Authorization", "Basic " + Base64Utils
-        .encodeToString((username + ":" + token).getBytes(UTF_8))).build();
-      return chain.proceed(request);
-    }
-  });
+      @Override
+      public Response intercept(Chain chain) throws IOException {
+        Request request = chain.request().newBuilder().addHeader("Authorization", "Basic " + Base64Utils
+            .encodeToString((username + ":" + token).getBytes(UTF_8))).build();
+        return chain.proceed(request);
+      }
+    });
+    return httpClient;
   }
 
   @Bean
@@ -50,7 +48,7 @@ public class RetrofitWorkshopApplication {
     return new Retrofit.Builder()
       .baseUrl(githubApiUrl)
       .addConverterFactory(GsonConverterFactory.create())
-      .client(httpClient.build())
+      .client(buildClient().build())
       .build();
   }
 
