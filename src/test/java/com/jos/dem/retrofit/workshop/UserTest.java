@@ -29,6 +29,13 @@ public class UserTest extends UserIntegrationTest {
 
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
+  @When("User call to get his public keys")
+  public void shouldGetKeys() throws Exception {
+    log.info("Running: User gets his SSH keys");
+
+    Call<List<PublicEmail>> call = userService.getEmails();
+  }
+
   @Then("^User gets his public emails$")
   public void shouldGetEmails() throws Exception {
     log.info("Validating collection integrity");
