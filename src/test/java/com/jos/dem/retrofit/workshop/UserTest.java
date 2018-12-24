@@ -29,7 +29,7 @@ public class UserTest extends UserIntegrationTest {
 
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
-  @Then("User call to get his public keys")
+  @Then("User gets his public keys")
   public void shouldGetKeys() throws Exception {
     log.info("Running: User gets his SSH keys");
 
