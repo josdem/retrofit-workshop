@@ -10,8 +10,6 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 import com.jos.dem.retrofit.workshop.model.SSHKey;
 import com.jos.dem.retrofit.workshop.model.PublicEmail;
 import com.jos.dem.retrofit.workshop.service.UserService;
