@@ -1,9 +1,9 @@
 buildscript {
   ext {
-    springBootVersion = '2.0.3.RELEASE'
+    springBootVersion = '2.1.1.RELEASE'
     cucumberVersion = '1.2.5'
     junitJupiterVersion = '5.2.0'
-    retrofitVersion = '2.4.0'
+    retrofitVersion = '2.5.0'
   }
   repositories {
     mavenCentral()
