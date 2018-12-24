@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -28,6 +30,11 @@ public class UserTest extends UserIntegrationTest {
   private UserService userService;
 
   private Logger log = LoggerFactory.getLogger(this.getClass());
+
+  @Before
+  public void setup() {
+    log.info("Before any test execution");
+  }
 
   @Then("User gets his public keys")
   public void shouldGetKeys() throws Exception {
@@ -78,6 +85,11 @@ public class UserTest extends UserIntegrationTest {
         log.info("error:", t.getMessage());
       }
     });
+  }
+
+  @After
+  public void tearDown() {
+    log.info("After all test execution");
   }
 
 }
