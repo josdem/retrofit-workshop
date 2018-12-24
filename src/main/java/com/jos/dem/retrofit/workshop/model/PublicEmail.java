@@ -1,10 +1,8 @@
 package com.jos.dem.retrofit.workshop.model;
 
 import lombok.Data;
-import lombok.Getter;
 
 @Data
-@Getter
 public class PublicEmail {
   private String email;
   private boolean verified;
