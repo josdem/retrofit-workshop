@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.jos.dem.retrofit.workshop.model.SSHKey;
 import com.jos.dem.retrofit.workshop.model.PublicEmail;
 import com.jos.dem.retrofit.workshop.service.UserService;
 
@@ -18,4 +19,17 @@ import org.slf4j.LoggerFactory;
 
 @ContextConfiguration(classes = RetrofitWorkshopApplication.class)
 @WebAppConfiguration
-public class UserIntegrationTest {}
+public class UserIntegrationTest {
+
+  @Autowired
+  private UserService userService;
+
+  Call<List<SSHKey>> getKeys() {
+    return userService.getKeys();
+  }
+
+  Call<List<PublicEmail>> getEmails(){
+    return userService.getEmails();
+  }
+
+}
