@@ -12,8 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.jos.dem.retrofit.workshop.service.UserService;
+import com.jos.dem.retrofit.workshop.model.SSHKey;
 import com.jos.dem.retrofit.workshop.model.PublicEmail;
+import com.jos.dem.retrofit.workshop.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,6 +27,10 @@ public class UserServiceImpl implements UserService {
   @PostConstruct
   public void setup() {
     userService = retrofit.create(UserService.class);
+  }
+
+  public Call<List<SSHKey>> getKeys() {
+    return userService.getKeys();
   }
 
   public Call<List<PublicEmail>> getEmails() {

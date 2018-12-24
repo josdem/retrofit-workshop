@@ -11,7 +11,7 @@ import com.jos.dem.retrofit.workshop.model.PublicEmail;
 public interface UserService {
 
   @GET("user/josdem/keys")
-  Call<List<SSHKey>> getkeys();
+  Call<List<SSHKey>> getKeys();
 
   @GET("user/public_emails")
   Call<List<PublicEmail>> getEmails();

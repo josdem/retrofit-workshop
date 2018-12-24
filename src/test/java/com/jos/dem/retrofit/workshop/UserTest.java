@@ -15,9 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import retrofit2.Call;
 import retrofit2.Response;
 
+import com.jos.dem.retrofit.workshop.model.SSHKey;
 import com.jos.dem.retrofit.workshop.model.PublicEmail;
 import com.jos.dem.retrofit.workshop.service.UserService;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,11 +29,25 @@ public class UserTest extends UserIntegrationTest {
 
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
-  @When("User call to get his public keys")
+  @Then("User call to get his public keys")
   public void shouldGetKeys() throws Exception {
     log.info("Running: User gets his SSH keys");
 
-    Call<List<PublicEmail>> call = userService.getEmails();
+    Call<List<SSHKey>> call = userService.getKeys();
+    call.enqueue(new retrofit2.Callback<List<SSHKey>>() {
+
+      @Override
+      public void onResponse(Call<List<SSHKey>> call, Response<List<SSHKey>> response){
+        List<SSHKey> keys = response.body();
+        assertTrue(keys.size() == 4, "Should be 4 keys");
+      }
+
+      @Override
+      public void onFailure(Call<List<SSHKey>> call, Throwable t) {
+        log.info("error:", t.getMessage());
+      }
+
+    });
   }
 
   @Then("^User gets his public emails$")
