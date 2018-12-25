@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.jos.dem.retrofit.workshop.model.LabelResponse;
 import com.jos.dem.retrofit.workshop.service.LabelService;
 
 @Service
