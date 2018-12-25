@@ -7,7 +7,7 @@ import com.jos.dem.retrofit.workshop.model.LabelResponse;
 
 public interface LabelService {
 
-  @POST("/repos/josdem/retrofit-workshop/labels")
+  @POST("repos/josdem/retrofit-workshop/labels")
   Call<LabelResponse> create();
 
 }
