@@ -1,4 +1,4 @@
-package com.jos.dem.retrofit.workshop.service;
+package com.jos.dem.retrofit.workshop.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,5 +21,14 @@ public class LabelResponse {
 
   @JsonProperty("default")
   private boolean status;
+
+  public String getColor(){
+    return color;
+  }
+
+  public String getName(){
+    return name;
+  }
+
 }
 
