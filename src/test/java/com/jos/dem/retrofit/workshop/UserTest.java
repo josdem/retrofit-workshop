@@ -19,6 +19,7 @@ import retrofit2.Response;
 
 import com.jos.dem.retrofit.workshop.model.SSHKey;
 import com.jos.dem.retrofit.workshop.model.PublicEmail;
+import com.jos.dem.retrofit.workshop.service.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,9 @@ import org.slf4j.LoggerFactory;
 public class UserTest extends UserIntegrationTest {
 
   private Logger log = LoggerFactory.getLogger(this.getClass());
+
+  @Autowired
+  private UserService userService;
 
   @Before
   public void setup() {
@@ -36,7 +40,7 @@ public class UserTest extends UserIntegrationTest {
   public void shouldGetKeys() throws Exception {
     log.info("Running: User gets his SSH keys");
 
-    Call<List<SSHKey>> call = getKeys();
+    Call<List<SSHKey>> call = userService.getKeys();
     call.enqueue(new retrofit2.Callback<List<SSHKey>>() {
 
       @Override
@@ -57,7 +61,7 @@ public class UserTest extends UserIntegrationTest {
   public void shouldGetEmails() throws Exception {
     log.info("Validating collection integrity");
 
-    Call<List<PublicEmail>> call = getEmails();
+    Call<List<PublicEmail>> call = userService.getEmails();
     call.enqueue(new retrofit2.Callback<List<PublicEmail>>() {
 
       @Override
