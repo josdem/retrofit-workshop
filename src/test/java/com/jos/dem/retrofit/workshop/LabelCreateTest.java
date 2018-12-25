@@ -10,6 +10,8 @@ import cucumber.api.java.en.Then;
 import retrofit2.Call;
 import retrofit2.Response;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jos.dem.retrofit.workshop.model.LabelResponse;
@@ -41,6 +43,7 @@ public class LabelCreateTest extends LabelIntegrationTest {
       public void onResponse(Call<LabelResponse> call, Response<LabelResponse> response){
         LabelResponse label = response.body();
 
+        log.info("response:" + ToStringBuilder.reflectionToString(label));
         assertAll("response",
             () -> assertEquals("cucumber", label.getName()),
             () -> assertEquals("ed14c5", label.getColor())
