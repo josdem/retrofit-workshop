@@ -6,16 +6,12 @@ import retrofit2.Retrofit;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jos.dem.retrofit.workshop.model.Label;
 import com.jos.dem.retrofit.workshop.model.LabelResponse;
 import com.jos.dem.retrofit.workshop.service.LabelService;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Service
 public class LabelServiceImpl implements LabelService {
@@ -25,16 +21,12 @@ public class LabelServiceImpl implements LabelService {
 
   private LabelService labelService;
 
-  private Logger log = LoggerFactory.getLogger(this.getClass());
-
   @PostConstruct
   public void setup() {
     labelService = retrofit.create(LabelService.class);
-    log.info("**labelService: " + ToStringBuilder.reflectionToString(labelService));
   }
 
   public Call<LabelResponse> create(@Body Label label) {
-    log.info("Creating a new label : " + ToStringBuilder.reflectionToString(label));
     return labelService.create(label);
   }
 

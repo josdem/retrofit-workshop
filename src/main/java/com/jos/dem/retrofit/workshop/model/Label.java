@@ -1,18 +1,9 @@
 package com.jos.dem.retrofit.workshop.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class Label {
 
-  @SerializedName("name")
-  @Expose
   private String name;
-  @SerializedName("description")
-  @Expose
   private String description;
-  @SerializedName("color")
-  @Expose
   private String color;
 
   public Label(String name, String description, String color){
