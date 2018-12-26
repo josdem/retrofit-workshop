@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
+import com.jos.dem.retrofit.workshop.model.Label;
 import com.jos.dem.retrofit.workshop.model.LabelResponse;
 
 public interface LabelService {

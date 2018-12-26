@@ -8,6 +8,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jos.dem.retrofit.workshop.model.LabelResponse;
 import com.jos.dem.retrofit.workshop.service.LabelService;
+import com.jos.dem.retrofit.workshop.util.LabelCreator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +28,8 @@ public class LabelCreateTest extends LabelIntegrationTest {
 
   @Autowired
   private LabelService labelService;
+  @Autowired
+  private LabelCreator labelCreator;
 
   @Before
   public void setup() {
@@ -36,14 +40,15 @@ public class LabelCreateTest extends LabelIntegrationTest {
   public void shouldCreateLabel() throws Exception {
     log.info("Running: User creates a new label");
 
-    Call<LabelResponse> call = labelService.create();
-    call.enqueue(new retrofit2.Callback<LabelResponse>() {
+    Call<LabelResponse> call = labelService.create(labelCreator.create());
+    call.enqueue(new Callback<LabelResponse>() {
 
       @Override
       public void onResponse(Call<LabelResponse> call, Response<LabelResponse> response){
         LabelResponse label = response.body();
 
-        log.info("response:" + ToStringBuilder.reflectionToString(label));
+        log.info("response:" + ToStringBuilder.reflectionToString(response));
+        log.info("label:" + ToStringBuilder.reflectionToString(label));
         assertAll("response",
             () -> assertEquals("cucumber", label.getName()),
             () -> assertEquals("ed14c5", label.getColor())

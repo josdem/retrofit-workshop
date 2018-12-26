@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import okhttp3.Request;
 import okhttp3.Response;
@@ -47,7 +47,7 @@ public class RetrofitWorkshopApplication {
   public Retrofit retrofit() {
     return new Retrofit.Builder()
       .baseUrl(githubApiUrl)
-      .addConverterFactory(GsonConverterFactory.create())
+      .addConverterFactory(JacksonConverterFactory.create())
       .client(buildClient().build())
       .build();
   }
