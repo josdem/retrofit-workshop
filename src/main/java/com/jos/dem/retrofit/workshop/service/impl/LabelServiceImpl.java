@@ -30,6 +30,7 @@ public class LabelServiceImpl implements LabelService {
   @PostConstruct
   public void setup() {
     labelService = retrofit.create(LabelService.class);
+    log.info("**labelService: " + ToStringBuilder.reflectionToString(labelService));
   }
 
   public Call<LabelResponse> create(@Body Label label) {
