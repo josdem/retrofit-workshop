@@ -30,25 +30,23 @@ public class RetrofitWorkshopApplication {
   @Value("${token}")
   private String token;
 
-  private OkHttpClient.Builder buildClient() {
-    OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-    httpClient.addInterceptor(new Interceptor() {
-      @Override
-      public Response intercept(Chain chain) throws IOException {
-        Request request = chain.request().newBuilder().addHeader("Authorization", "Basic " + Base64Utils
-            .encodeToString((username + ":" + token).getBytes(UTF_8))).build();
-        return chain.proceed(request);
-      }
-    });
-    return httpClient;
-  }
+  OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+
+  Interceptor interceptor = new Interceptor() {
+    @Override
+    public okhttp3.Response intercept(Chain chain) throws IOException {
+      Request request = chain.request().newBuilder().addHeader("Authorization", "token " + token).build();
+      return chain.proceed(request);
+    }
+  };
 
   @Bean
   public Retrofit retrofit() {
+    clientBuilder.interceptors().add(interceptor);
     return new Retrofit.Builder()
       .baseUrl(githubApiUrl)
+      .client(clientBuilder.build())
       .addConverterFactory(GsonConverterFactory.create())
-      .client(buildClient().build())
       .build();
   }
 
