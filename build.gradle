@@ -30,7 +30,6 @@ dependencies {
   compile('org.springframework.boot:spring-boot-starter-tomcat')
   compileOnly('org.projectlombok:lombok')
   implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-  implementation'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
   compile('com.squareup.retrofit2:converter-gson:2.5.0')
   compile('org.apache.commons:commons-lang3:3.7')
   testCompile('org.springframework.boot:spring-boot-starter-test')
