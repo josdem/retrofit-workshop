@@ -41,28 +41,16 @@ public class LabelCreateTest extends LabelIntegrationTest {
     log.info("Running: User creates a new label");
 
     Call<LabelResponse> call = labelService.create(labelCreator.create());
-    call.enqueue(new Callback<LabelResponse>() {
+    Response<LabelResponse> response = call.execute();
+    LabelResponse label = response.body();
 
-      @Override
-      public void onResponse(Call<LabelResponse> call, Response<LabelResponse> response){
-        LabelResponse label = response.body();
-
-        log.info("response:" + ToStringBuilder.reflectionToString(response));
-        log.info("label:" + ToStringBuilder.reflectionToString(label));
-        assertAll("response",
-            () -> assertEquals("cucumber", label.getName()),
-            () -> assertEquals("ed14c5", label.getColor())
-        );
-      }
-
-      @Override
-      public void onFailure(Call<LabelResponse> call, Throwable t) {
-        log.info("error:", t.getMessage());
-      }
-
-    });
+    log.info("response:" + ToStringBuilder.reflectionToString(response));
+    log.info("label:" + ToStringBuilder.reflectionToString(label));
+    assertAll("response",
+      () -> assertEquals("cucumber", label.getName()),
+      () -> assertEquals("ed14c5", label.getColor())
+    );
   }
-
 
   @After
   public void tearDown() {
