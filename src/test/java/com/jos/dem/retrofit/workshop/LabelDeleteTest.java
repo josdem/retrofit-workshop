@@ -36,7 +36,7 @@ public class LabelDeleteTest extends LabelIntegrationTest {
     log.info("Running: User updates label");
 
     Call<Response<Void>> call = labelService.delete("spock");
-    Response<Void> response = call.execute();
+    Response<Response<Void>> response = call.execute();
     assertEquals(204, response.code());
 
   }

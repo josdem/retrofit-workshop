@@ -4,8 +4,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.Body;
 import retrofit2.http.Path;
-import retrofit2.http.Response;
-import retrofit2.http.Void;
+import retrofit2.Response;
 
 
 import javax.annotation.PostConstruct;
@@ -39,7 +38,7 @@ public class LabelServiceImpl implements LabelService {
   }
 
   public Call<Response<Void>> delete(@Path("name") String name) {
-    return labelService.update(name);
+    return labelService.delete(name);
   }
 
 }
