@@ -51,29 +51,20 @@ public class UserTest extends UserIntegrationTest {
     log.info("Validating collection integrity");
 
     Call<List<PublicEmail>> call = userService.getEmails();
-    call.enqueue(new retrofit2.Callback<List<PublicEmail>>() {
+    Response<List<PublicEmail>> response = call.execute();
+    List<PublicEmail> emails = response.body();
 
-      @Override
-      public void onResponse(Call<List<PublicEmail>> call, Response<List<PublicEmail>> response) {
-        List<PublicEmail> emails = response.body();
-        assertFalse(emails.isEmpty(), () -> "Should not be empty");
-        assertTrue(emails.size() == 1,  () -> "Should be 1 email");
+    assertFalse(emails.isEmpty(), () -> "Should not be empty");
+    assertTrue(emails.size() == 1,  () -> "Should be 1 email");
 
-        PublicEmail email = emails.get(0);
-        log.info("Validating email attributes");
-        assertAll("email",
-          () -> assertEquals("joseluis.delacruz@gmail.com", email.getEmail(), "Should contains josdem's email"),
-          () -> assertTrue(email.isVerified(), "Should be verified"),
-          () -> assertTrue(email.isPrimary(), "Should be primary"),
-          () -> assertEquals("public", email.getVisibility(), "Should be public")
-        );
-      }
-
-      @Override
-      public void onFailure(Call<List<PublicEmail>> call, Throwable t) {
-        log.info("error:", t.getMessage());
-      }
-    });
+    PublicEmail email = emails.get(0);
+    log.info("Validating email attributes");
+      assertAll("email",
+        () -> assertEquals("joseluis.delacruz@gmail.com", email.getEmail(), "Should contains josdem's email"),
+        () -> assertTrue(email.isVerified(), "Should be verified"),
+        () -> assertTrue(email.isPrimary(), "Should be primary"),
+        () -> assertEquals("public", email.getVisibility(), "Should be public")
+      );
   }
 
   @After
