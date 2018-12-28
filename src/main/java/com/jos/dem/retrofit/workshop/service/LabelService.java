@@ -3,6 +3,8 @@ package com.jos.dem.retrofit.workshop.service;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Path;
+import retrofit2.http.Response;
+import retrofit2.http.Void;
 import retrofit2.http.POST;
 import retrofit2.http.PATCH;
 
@@ -15,6 +17,8 @@ public interface LabelService {
   Call<LabelResponse> create(@Body Label label);
   @PATCH("repos/josdem/retrofit-workshop/labels/{name}")
   Call<LabelResponse> update(@Body Label label, @Path("name") String name);
+  @DELETE("repos/josdem/retrofit-workshop/labels/{name}")
+  Call<Response<Void>> delete(@Path("name") String name);
 
 
 }
