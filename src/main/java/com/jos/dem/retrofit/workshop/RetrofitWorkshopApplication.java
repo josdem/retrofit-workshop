@@ -25,8 +25,6 @@ public class RetrofitWorkshopApplication {
 
   @Value("${github.api.url}")
   private String githubApiUrl;
-  @Value("${username}")
-  private String username;
   @Value("${token}")
   private String token;
 
