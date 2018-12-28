@@ -1,10 +1,7 @@
 package com.jos.dem.retrofit.workshop;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 import java.io.IOException;
 
-import org.springframework.util.Base64Utils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
