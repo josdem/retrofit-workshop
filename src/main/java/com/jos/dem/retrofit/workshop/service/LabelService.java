@@ -2,7 +2,9 @@ package com.jos.dem.retrofit.workshop.service;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Path;
 import retrofit2.http.POST;
+import retrofit2.http.PATCH;
 
 import com.jos.dem.retrofit.workshop.model.Label;
 import com.jos.dem.retrofit.workshop.model.LabelResponse;
@@ -11,5 +13,8 @@ public interface LabelService {
 
   @POST("repos/josdem/retrofit-workshop/labels")
   Call<LabelResponse> create(@Body Label label);
+  @PATCH("repos/josdem/retrofit-workshop/labels/{name}")
+  Call<LabelResponse> update(@Path("name") String name);
+
 
 }
