@@ -1,8 +1,9 @@
 package com.jos.dem.retrofit.workshop.service.impl;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.Retrofit;
+import retrofit2.http.Body;
+import retrofit2.http.Path;
 import retrofit2.http.Header;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +30,10 @@ public class LabelServiceImpl implements LabelService {
 
   public Call<LabelResponse> create(@Body Label label) {
     return labelService.create(label);
+  }
+
+  public Call<LabelResponse> update(@Path("name") String name) {
+    return labelService.update(name);
   }
 
 }
