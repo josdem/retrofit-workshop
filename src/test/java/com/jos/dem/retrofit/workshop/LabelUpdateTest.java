@@ -38,7 +38,7 @@ public class LabelUpdateTest extends LabelIntegrationTest {
   public void shouldUpdateLabel() throws Exception {
     log.info("Running: User updates label");
 
-    Call<LabelResponse> call = labelService.update("cucumber");
+    Call<LabelResponse> call = labelService.update(labelCreator.update(), "cucumber");
     Response<LabelResponse> response = call.execute();
     LabelResponse label = response.body();
 

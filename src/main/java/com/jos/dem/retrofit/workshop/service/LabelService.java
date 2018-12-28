@@ -14,7 +14,7 @@ public interface LabelService {
   @POST("repos/josdem/retrofit-workshop/labels")
   Call<LabelResponse> create(@Body Label label);
   @PATCH("repos/josdem/retrofit-workshop/labels/{name}")
-  Call<LabelResponse> update(@Path("name") String name);
+  Call<LabelResponse> update(@Body Label label, @Path("name") String name);
 
 
 }

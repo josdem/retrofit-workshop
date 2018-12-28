@@ -32,8 +32,8 @@ public class LabelServiceImpl implements LabelService {
     return labelService.create(label);
   }
 
-  public Call<LabelResponse> update(@Path("name") String name) {
-    return labelService.update(name);
+  public Call<LabelResponse> update(@Body Label label, @Path("name") String name) {
+    return labelService.update(label, name);
   }
 
 }
