@@ -41,20 +41,9 @@ public class UserTest extends UserIntegrationTest {
     log.info("Running: User gets his SSH keys");
 
     Call<List<SSHKey>> call = userService.getKeys();
-    call.enqueue(new retrofit2.Callback<List<SSHKey>>() {
-
-      @Override
-      public void onResponse(Call<List<SSHKey>> call, Response<List<SSHKey>> response){
-        List<SSHKey> keys = response.body();
-        assertTrue(keys.size() == 4, "Should be 4 keys");
-      }
-
-      @Override
-      public void onFailure(Call<List<SSHKey>> call, Throwable t) {
-        log.info("error:", t.getMessage());
-      }
-
-    });
+    Response<List<SSHKey>> response = call.execute();
+    List<SSHKey> keys = response.body();
+    assertTrue(keys.size() == 4, "Should be 4 keys");
   }
 
   @Then("^User gets his public emails$")

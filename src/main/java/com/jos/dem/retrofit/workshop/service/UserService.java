@@ -10,7 +10,7 @@ import com.jos.dem.retrofit.workshop.model.PublicEmail;
 
 public interface UserService {
 
-  @GET("user/josdem/keys")
+  @GET("users/josdem/keys")
   Call<List<SSHKey>> getKeys();
 
   @GET("user/public_emails")
