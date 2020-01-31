@@ -32,7 +32,6 @@ dependencies {
   implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
   implementation'com.squareup.retrofit2:converter-jackson:2.1.0'
   implementation('org.apache.commons:commons-lang3:3.7')
-  testImplementation('org.springframework.boot:spring-boot-starter-test')
   testImplementation("info.cukes:cucumber-java:$cucumberVersion")
   testImplementation("info.cukes:cucumber-junit:$cucumberVersion")
   testImplementation("info.cukes:cucumber-spring:$cucumberVersion")
