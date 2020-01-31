@@ -43,7 +43,7 @@ public class UserTest extends UserIntegrationTest {
     Call<List<SSHKey>> call = userService.getKeys();
     Response<List<SSHKey>> response = call.execute();
     List<SSHKey> keys = response.body();
-    assertTrue(keys.size() == 4, "Should be 4 keys");
+    assertTrue(keys.size() > 3, "Should be more than 3 keys");
   }
 
   @Then("^User gets his public emails$")

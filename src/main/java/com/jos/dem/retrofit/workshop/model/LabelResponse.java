@@ -22,13 +22,7 @@ public class LabelResponse {
   @JsonProperty("default")
   private boolean status;
 
-  public String getColor(){
-    return color;
-  }
-
-  public String getName(){
-    return name;
-  }
+  private String description;
 
 }
 
