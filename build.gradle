@@ -11,7 +11,7 @@ ext {
 
 
 group = 'com.jos.dem.retrofit.workshop'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 sourceCompatibility = 12
 
 configurations {
