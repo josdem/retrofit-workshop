@@ -6,7 +6,7 @@ plugins {
 
 ext {
   cucumberVersion = '1.2.6'
-  retrofitVersion = '2.5.0'
+  retrofitVersion = '2.7.1'
 }
 
 
